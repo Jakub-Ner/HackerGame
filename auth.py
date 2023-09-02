@@ -1,12 +1,12 @@
 import streamlit as st
-import random, time, os, subprocess
+import random, time
 
-def set_password(password):
-    with open("./password.txt", "w") as f:
+def set_password(password, color):
+    with open(f"./passwords/{color}_password.txt", "w") as f:
         f.write(password)
 
-def get_password():
-    with open("./password.txt", "r") as f:
+def get_password(color):
+    with open(f"./passwords/{color}_password.txt", "r") as f:
         return f.read()
 
 def fail_login():
@@ -21,23 +21,23 @@ def success_login():
     st.success("Logged in successfully!")
     st.session_state.logged = True
     time.sleep(2)
-    st.experimental_rerun()
+    st.experimental_rerun() # Refresh the page
 
-def log_in():
+def log_in(color):
     if st.session_state.logged:
         return True
 
     password = st.text_input(label="Secret key:", value="", type="password")
 
-    if (PASSWD := get_password()) != "":
+    if (PASSWD := get_password(color)) != "":
         if password == PASSWD:
             return success_login()
         else:
             return fail_login()
 
-    if st.session_state.counter < random.randint(2, 10):
+    if st.session_state.counter < random.randint(2, 10) + 1:
         return fail_login()
     else:
-        set_password(password)
+        set_password(password, color)
         return success_login()
         

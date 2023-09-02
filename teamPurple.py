@@ -3,13 +3,17 @@ import streamlit as st
 
 from auth import log_in
 
-from styles import Style, GREEN, RED, BLUE, YELLOW
+from styles import Style, GREEN, RED, BLUE, YELLOW, PURPLE
 from helpers import teams, hacker_view
 
-style = Style(RED)
+style = Style(PURPLE)
 target = [team for team in teams if team.color == style.color][0]
 
-st.set_page_config(page_title=target.name, initial_sidebar_state="collapsed")
+st.set_page_config(
+    page_title=target.name, 
+    initial_sidebar_state="collapsed"
+    )
+    
 st.markdown(style.global_styles, unsafe_allow_html=True)
 
 
@@ -72,4 +76,5 @@ Należy pozbawić reaktor odpowiednich składników w następującej kolejności
 
 <p style="size: 40px"> {target.reactor_sequence} </p>
 
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+    

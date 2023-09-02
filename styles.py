@@ -3,6 +3,7 @@ GREEN = "green", "#04bd20"
 BLUE = "blue", "#00a9ff"
 RED = "red", "#bd2004"
 YELLOW = "yellow", "#ffff0f"
+PURPLE = "purple", "#ff00ff"
 
 class Style:
     def __init__(self, color):
@@ -62,6 +63,8 @@ def stick(color):
         selected_color = RED[1]
     elif color == "Y":
         selected_color = YELLOW[1]
+    elif color == "P":
+        selected_color = PURPLE[1]
     else:
         print("ERROR: wrong color")
         return None

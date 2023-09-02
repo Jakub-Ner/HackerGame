@@ -5,6 +5,7 @@ img_names = [
     "biohazard_blue",
     "biohazard_red",
     "biohazard_yellow",
+    "biohazard_purple",
 ]
 
 for img_name in img_names:
